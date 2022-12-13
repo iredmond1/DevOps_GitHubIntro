@@ -1,0 +1,39 @@
+#include <iostream> 
+#include <fstream> 
+#include <vector> 
+#include <string> 
+  
+using namespace std; 
+  
+int main() 
+{ 
+    xml_doc *doc = NULL; 
+    xml_node *root_e = NULL; 
+  
+    cout << "This is a program to read and parse an XML file." << endl; 
+    doc = infile ("catalog.xml", NULL, 0); 
+    ifstream infile ("catalog.xml"); 
+  
+    if (doc == NULL) { 
+        printf("An error has occured. Please try again."); 
+        return 0; 
+    } 
+  
+    root_e = xml_docGetRootElement(doc); 
+    xml_node *this_node = NULL; 
+  
+    for (this_node = root_e; this_node; this_node = this_node->next) { 
+        if (this_node->type == xml_e_node) { 
+            printf("Node: %s\n", this_node->name); 
+        } 
+    } 
+    
+    xml 
+    FreeDoc(doc); 
+    return 0; 
+  
+    infile.close(); 
+    cout << "Completed." << endl; 
+  
+return 0; 
+} 
